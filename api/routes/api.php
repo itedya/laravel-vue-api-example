@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Middlewares\AuthenticatedByToken;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -15,3 +17,6 @@ use App\Http\Controllers\AuthController;
 */
 
 Route::post("/login", [AuthContoller::class, 'login']);
+Route::get("/user", function() {
+	return auth()->user();
+})->middleware(AuthenticatedByToken::class);
