@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 	public function login() {
-		$validator = Validator::make([
+		$validator = Validator::make(request()->all(), [
 			'username' => ['required', 'string', 'min:3', 'max:64'],
 			'password' => ['required', 'string', 'min:8', 'max:64']
 		]);
